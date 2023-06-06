@@ -16,9 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from gponmap.views import QgisPointAPIView, QgisLineAPIView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("api/", include("gponmap.api")),
     path('gponmap/', include('gponmap.urls')),
+    path('qgis_point', QgisPointAPIView.as_view(), name='points-api'),
+    path('qgis_line', QgisLineAPIView.as_view(), name='lines-api'),
+
 ]
